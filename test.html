@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="wulikunkun@outlook.com"></a>
+        </li>
+        <li>
+            <a href="wulikunkun@gmail.com"></a>
+        </li>
+        <li>
+            <a href="918407369@qq.com"></a>
+        </li>
+    </ul>
+
+    <script src="./src/jquery-3.4.0.js"></script>
+    <script src="./src/firstpugin.js"></script>
+    <script src="./src/secondplugin.js"></script>
+    <script>
+        $(function () {
+            debugger;
+            var $nodeList = $("ul li a");
+            $.each($nodeList, function (index, item) {
+                $(item).myFirstPlugin({
+                    fontsize: "20px",
+                    color: "orange"
+                }).mySecondPlugin();
+                //注意这里采用了链式调用
+            })
+        });
+    </script>
+</body>
+
+</html>
