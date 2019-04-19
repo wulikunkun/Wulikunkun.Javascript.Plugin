@@ -1,4 +1,6 @@
+// 第一代初始版本
 $.fn.myFirstPlugin = function (options) {
+    debugger;
     var defaults = {
         fontsize: "14px",
         color: "blue",
