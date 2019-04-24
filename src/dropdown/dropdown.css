@@ -1,0 +1,51 @@
+.input_container {
+  height: 28px;
+  border: 1px solid #dddfe1;
+  border-radius: 8px;
+  display: block;
+  /* margin: 300px auto 0; */
+  padding: 0 5px;
+  cursor: pointer;
+  /* 设置汉字之间的间距使用的是letter-spacing */
+  letter-spacing: .2px;
+  color: gray;
+  /* 去掉input默认的选中之后的高亮样式 */
+  outline: none;
+}
+
+.input_container :hover {
+  cursor: pointer;
+}
+
+/* 在这里替代input元素在默认获得焦点时的样式 */
+
+.input_container:focus {
+  border-width: .8px;
+}
+
+.input_radius {
+  border-radius: 8px 8px 2px 2px;
+}
+
+.dropdown_container {
+  border: 1px solid #dddfe1;
+  margin-top: 1.1px;
+  border-radius: 0px;
+  /* box-shadow: inset 0px 0px 4px #94D8F6; */
+  display: none;
+  /* box-shadow: 0 0 10px gray; */
+}
+
+.dropdown_item {
+  font-size: 13.5px;
+  padding: 0 5px;
+  line-height: 35px;
+  cursor: pointer;
+  margin-top: 2px;
+  color: gray;
+}
+
+.dropdown_item:hover {
+  background: #94D8F6;
+  color: white;
+}

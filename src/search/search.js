@@ -38,6 +38,7 @@
         }
     }
 
+    // 这里也可以写成 $.fn["mySearch"]的形式，这都是访问对象属性值的形式，注意使用方括号访问时需要加双引号
     $.fn.mySearch = function (options) {
         debugger;
         //个人认为这里才是调试组件打断点的最佳位置
