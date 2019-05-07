@@ -28,42 +28,48 @@
         init: function () {
             //这里初始化样式一定要在初始化绑定事件的前面，否则绑定事件容易出现问题
             this.initStyle();
-            this.initEvent();
             this.loadData();
+            this.initEvent();
         },
         initStyle: function (e) {
 
             //#region 动态设置所绑定插件的元素的样式
 
             this.$ele.addClass("input_container");
-            this.$ele.val(this.defaults.title);
+            this.$ele.val(this.options.title);
             this.$ele.css({ "width": this.options.width });
 
             //#endregion
 
             //#region 给input元素设置包裹元素
 
+            // 首先获取input元素原来的父元素，我们给input元素设置包裹元素之后仍然需要将这个包裹元素添加到input元素原来的父元素中
+            var $initialParent = this.$ele.parent();
+            $initialParent.css("position", "relative");
             //我在创建input的包裹元素时犯了一个错误，input外面的这个包裹元素是动态生成的，尽管将input元素添加到了这个动态生成的包裹元素中，但是这个包裹元素还没有添加到DOM树中，因此会导致添加之后不会显示
             var $input_out_container = $(this.components.input_out_container);
 
             //这里的这个inline-block必须这样写，不可以写成驼峰式，否则该样式不会生效，建议以后通过jquery的css方法设置样式时属性名和属性值都写成与标准CSS一直的格式
             $input_out_container.css({
                 "display": "inline-block",
-                "position": "relative",
+                "position": "absolute",
                 "width": this.options.width + 11,
                 "height": "300"
-                // "background": "blue"
             });
+            debugger;
             $input_out_container.append(this.$ele);
-            $("body").append($input_out_container);
+            $initialParent.append($input_out_container);
             //#endregion
 
             //#region 获取input元素的宽度和高度并对渐现的下拉列表进行设置
             this.$ele.parent().append(this.components.dropdown_container);
             var inputWidth = this.$ele.width();
             this.$ele.parent().find(".dropdown_container").css({
-                "width": inputWidth + 9.2,
-                "height": this.options.height
+                "width": inputWidth + 10.5,
+                "height": this.options.height,
+                "margin-left": ".5px",
+                "z-index": 10000,
+                "position": "absolute"
             });
             //#endregion
 
@@ -75,7 +81,7 @@
                 "position": "absolute",
                 "right": "5px",
                 "top": "7px",
-                "color": "#c0c0bc"
+                "color": "#7030A0"
             });
             $input_out_container.append(arrow);
 
@@ -92,8 +98,6 @@
             // $input_out_container.append($(this.components.arrow));
 
             //#endregion
-
-
         },
         initEvent: function () {
 
@@ -115,6 +119,10 @@
 
             //在页面其它地方点击的时候隐藏dropdown
             $(document).click($.proxy(this.hideDropdownAtOtherPlace, this));
+
+            //#region 选中一项给input赋值
+            this.$ele.next(".dropdown_container").find(".dropdown_item").on("click", $.proxy(this.setInputValue, this));
+            //#endregion
         },
         showDropdown: function (e) {
             var $this = $(e.target);
@@ -123,7 +131,7 @@
         },
         hideDropdown: function (e) {
             var $this = $(e.target);
-            $this.next(".dropdown_container").fadeOut();
+            $this.next(".dropdown_container").fadeOut(100);
             $this.parent().find(".fas").toggleClass("fa-chevron-up fa-chevron-down");
         },
         hideDropdownAtOtherPlace: function (e) {
@@ -132,11 +140,10 @@
 
             var $target = $(e.target);
             if (!$target.is(".fas") && !$target.is(".input_container")) {
-                debugger;
 
                 // 注意这里设置一个或者多个css属性的值可以使用css方法，添加或者或者删除一个元素的某一个或者多个class可以使用addClass或者removeClass方法，而如果要将一个元素原来所有的class进行替换可以使用这里的attr方法
                 this.$ele.parent().find(".fas").attr("class", "fas fa-chevron-down");
-                this.$ele.parent().find(".dropdown_container").fadeOut();
+                this.$ele.parent().find(".dropdown_container").fadeOut(100);
             }
         },
         changeBorderRadius: function (e) {
@@ -160,11 +167,12 @@
                 $this.prev(".dropdown_container").fadeIn();
             }
             else {
-                $this.prev(".dropdown_container").fadeOut();
+                $this.prev(".dropdown_container").fadeOut(100);
             }
         },
         setInputValue: function (e) {
-
+            var $this = $(e.target);
+            this.$ele.val($this.text());
         }
     }
 

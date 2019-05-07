@@ -11,24 +11,33 @@
 </head>
 
 <body>
-    <input id="one" />
-    <!-- <input id="two" style="margin-top:30px" />
-    <input id="three" style="margin-top:30px" /> -->
+    <div style="padding-left:40%;padding-top: 300px;height:50px">
+        <input id="one" />
+
+    </div>
+    <div style="padding-left:40%;height:50px">
+        <input id="two" />
+    </div>
+    <div style="padding-left:40%;height:50px">
+        <input id="three" />
+    </div>
+
 
     <script src="../reference/jquery-3.4.0.js"></script>
     <script src="./dropdown.js"></script>
     <script>
         $("#one").MyDropdown({
-            width: 180
+            width: 150,
+            title: '请选择国家'
         });
-        // $("#two").MyDropdown({
-        //     height: 120,
-        //     width: 150
-        // });
-        // $("#three").MyDropdown({
-        //     height: 150,
-        //     width: 120
-        // });
+        $("#two").MyDropdown({
+            width: 120,
+            title: "请选择省份"
+        });
+        $("#three").MyDropdown({
+            width: 120,
+            title: "请选择城市"
+        });
     </script>
 </body>
 

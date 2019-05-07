@@ -3,7 +3,7 @@
   border: 1px solid #dddfe1;
   border-radius: 8px;
   display: block;
-  /* margin: 300px auto 0; */
+  box-shadow: inset 0px 0px .8px gray;
   padding: 0 5px;
   cursor: pointer;
   /* 设置汉字之间的间距使用的是letter-spacing */
@@ -28,12 +28,12 @@
 }
 
 .dropdown_container {
-  border: 1px solid #dddfe1;
+  border: none;
+  box-shadow: inset 0px 0px 2px gray;
   margin-top: 1.1px;
-  border-radius: 0px;
-  /* box-shadow: inset 0px 0px 4px #94D8F6; */
+  border-radius: 2px;
   display: none;
-  /* box-shadow: 0 0 10px gray; */
+  background-color: white;
 }
 
 .dropdown_item {
@@ -43,9 +43,21 @@
   cursor: pointer;
   margin-top: 2px;
   color: gray;
+  border-radius: 2px;
 }
 
 .dropdown_item:hover {
-  background: #94D8F6;
+  background: #AAAEEB;
   color: white;
+}
+
+/* 初始化代码 */
+
+li {
+  margin-left: -3px;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, legend, button form, fieldset, input, textarea, p, blockquote, th, td {
+  padding: 0;
+  margin: 0;
 }
