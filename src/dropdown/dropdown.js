@@ -1,7 +1,7 @@
-; (function () {
+; (function (jQuery, document, window, undefined) {
 
     function Dropdown(ele, options) {
-        this.$ele = ele;
+        this.$ele = $(ele);
         this.defaults = {
             title: "请进行选择",
             data: [
@@ -34,7 +34,7 @@
         initStyle: function (e) {
 
             //#region 动态设置所绑定插件的元素的样式
-
+            debugger;
             this.$ele.addClass("input_container");
             this.$ele.val(this.options.title);
             this.$ele.css({ "width": this.options.width });
@@ -176,9 +176,17 @@
         }
     }
 
+    //正确的写法
     $.fn.MyDropdown = function (options) {
-        var calendar = new Dropdown(this, options);
-        return this;
-    }
+        return this.each(function () {
+            new Dropdown(this, options);
+        });
+    };
+
+    //错误的写法,如果这样写，那么在页面中我们使用插件时如果使用的选择器选择了多个元素就无法再每一个元素上应用该插件
+    // $.fn.MyDropdown = function (options) {
+    //     var calendar = new Dropdown(this, options);
+    //     return this;
+    // }
 
 })(jQuery, document, window);
