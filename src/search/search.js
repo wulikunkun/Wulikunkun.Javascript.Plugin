@@ -9,7 +9,7 @@
         this.ele = ele;
         //这里是非常容易混淆的一点，this指的是我们使用Search这个构造函数创建的新对象，而this.ele指的是我们应用这个组件所绑定的那个HTML元素通过jQuery选中之后形成的jQuery对象
         this.defaults = {
-            isSearch: false
+            isSearch: true
         };
 
         this.options = $.extend({}, this.defaults, options);

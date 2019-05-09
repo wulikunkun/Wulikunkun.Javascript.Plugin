@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="./datepicker.css" rel="stylesheet" />
+</head>
+
+<body>
+    <label style="font-size: 13.5px;color:gray">请选择日期：</label>
+    <div id="container">
+        <input name="date" />
+    </div>
+
+    <script src="../reference/jquery-3.4.0.js"></script>
+    <script src="./datepicker.js"></script>
+    <script>
+        $("input[name='date']").myDatepicker();
+    </script>
+</body>
+
+</html>
