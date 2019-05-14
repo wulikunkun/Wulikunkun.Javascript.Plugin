@@ -1,0 +1,42 @@
+li {
+  margin-left: -3px;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+legend,
+button form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  padding: 0;
+  margin: 0;
+}
+
+.fas.fa-chevron-left,
+.fas.fa-chevron-right {
+  position: absolute;
+  top: 200px;
+  /* 控制font-awesome字体图标的大小用的是font-size属性 */
+  font-size: 45px;
+  cursor: pointer;
+  display: none;
+}

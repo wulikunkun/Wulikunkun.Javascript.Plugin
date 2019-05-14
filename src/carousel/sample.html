@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="./carousel.css" />
+</head>
+
+<body>
+    <div id="test">
+        <img src="./imgs/1.jpg" />
+        <img src="./imgs/2.jpg" />
+        <img src="./imgs/3.jpg" />
+        <img src="./imgs/4.jpg" />
+        <img src="./imgs/5.jpg" />
+    </div>
+
+    <script src="../reference/jquery-3.4.0.js"></script>
+    <script src="./carousel.js"></script>
+    <script>
+        $("#test").myCarousel({
+            duration: 5000
+        });
+    </script>
+</body>
+
+</html>
