@@ -26,7 +26,6 @@
             this.initEvents();
         },
         initStyle: function () {
-            debugger;
 
             this.$ele.css({
                 "position": "relative",
@@ -34,6 +33,7 @@
                 // $(window).outerWidth()可以获取包含滚动条在内的视口宽度
                 "width": $(window).outerWidth()
             });
+
             this.$ele.children("img").css({
                 "float": "left",
                 "display": "inline-block",
@@ -44,8 +44,6 @@
             for (var i = 1; i <= this.$ele.children("img").length; i++) {
                 this.components.$dotContainer.append(this.components.$dot);
             }
-
-            // this.components.$dotContainer.appendTo(this.$ele);
 
             // 上面那种写法和这里其实是一样的
             // this.$ele.forEach(function () {
@@ -70,23 +68,22 @@
         initEvents: function () {
 
             //#region 页面一加载就开始滚动
-            var countFlag = 0;
             setInterval(() => {
-                if (countFlag < this.components.$scrollContainer.children("img").length - 1) {
-                    var leftOffset = parseInt(this.components.$scrollContainer.css("left"));
-                    var windowWidth = this.$ele.width();
-                    leftOffset -= windowWidth;
+                var movedDistance = parseInt(this.components.$scrollContainer.css("left"));
+                var everyMoveDistance = this.$ele.width();
+                var index = -(movedDistance / everyMoveDistance);
+                var maxIndex = this.components.$scrollContainer.find("img").length - 1;
+                if (index < maxIndex) {
+                    var leftOffset = -(index + 1) * everyMoveDistance;
                     this.components.$scrollContainer.animate({ "left": leftOffset });
 
                     // 如果想让jQuery的animate方法每次点击向左或者向右移动一定的距离，可以这样写(注意这里的加等和减等)：
                     // this.components.$scrollContainer.animate({ "left": "-=200px" });
                     // this.components.$scrollContainer.animate({ "left": "+=200px" });
 
-                    countFlag += 1;
                 }
                 else {
-                    countFlag = 0;
-                    var leftOffset = parseInt(this.components.$scrollContainer.css("left", "0px"));
+                    this.components.$scrollContainer.css("left", "0px");
                 }
 
             }, this.settings.duration);
@@ -103,7 +100,8 @@
 
             this.$ele.find(".fas.fa-circle").click($.proxy(this.moveByDot, this));
 
-
+            this.$ele.find(".fa-chevron-left").click($.proxy(this.moveLeft, this));
+            this.$ele.find(".fa-chevron-right").click($.proxy(this.moveRight, this));
             //#endregion
         },
         showArrow: function (e) {
@@ -115,14 +113,39 @@
             this.components.$rightArrow.fadeOut();
         },
         moveLeft: function (e) {
-
+            debugger;
+            //根据偏移的总距离和每次偏移的距离之商求出当前图片的索引值
+            var leftOffset = parseInt(this.components.$scrollContainer.css("left"));
+            var everyMoveDistance = this.$ele.width();
+            //可以放心的使用这种写法将负数转为正数
+            var index = -(leftOffset / everyMoveDistance);
+            var maxIndex = this.$ele.find("img").length - 1;
+            if (index < maxIndex) {
+                var moveDistance = -(index + 1) * everyMoveDistance;
+                this.components.$scrollContainer.animate({ "left": moveDistance });
+            }
+            else {
+                this.components.$scrollContainer.animate({ "left": "0" });
+            }
         },
         moveRight: function (e) {
-
+            debugger;
+            //根据偏移的总距离和每次偏移的距离之商求出当前图片的索引值
+            var leftOffset = parseInt(this.components.$scrollContainer.css("left"));
+            var everyMoveDistance = this.$ele.width();
+            //可以放心的使用这种写法将负数转为正数
+            var index = -(leftOffset / everyMoveDistance);
+            if (index != 0) {
+                var moveDistance = -(index - 1) * everyMoveDistance;
+                this.components.$scrollContainer.animate({ "left": moveDistance });
+            }
+            else {
+                this.components.$scrollContainer.animate({ "left": "0" });
+            }
         },
         moveByDot: function (e) {
-            debugger;
             var targetDotIndex = $(e.target).index();
+            //通过jQuery的index方法获取一个元素在多个类似兄弟元素中的索引值
             var distance = this.$ele.width() * targetDotIndex;
             this.components.$scrollContainer.animate({ "left": -distance });
         }
