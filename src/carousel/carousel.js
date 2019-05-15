@@ -102,9 +102,12 @@
 
             this.$ele.find(".fa-chevron-left").click($.proxy(this.moveLeft, this));
             this.$ele.find(".fa-chevron-right").click($.proxy(this.moveRight, this));
+
+            $(window).resize($.proxy(this.resizeByWindow, this));
             //#endregion
         },
         showArrow: function (e) {
+            //如果给fadeIn和fadeOut加上参数表示的并不是多少秒之后淡出或者淡入，而是表示淡入淡出的效果持续的时间段，在这个时间段之后元素将恢复原来的显示状态
             this.components.$leftArrow.fadeIn();
             this.components.$rightArrow.fadeIn();
         },
@@ -148,6 +151,11 @@
             //通过jQuery的index方法获取一个元素在多个类似兄弟元素中的索引值
             var distance = this.$ele.width() * targetDotIndex;
             this.components.$scrollContainer.animate({ "left": -distance });
+        },
+        resizeByWindow: function (e) {
+            debugger;
+            this.initStyle();
+            // this.$ele.width($(window).outerWidth());
         }
 
     };
