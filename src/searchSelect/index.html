@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="./searchSelect.css" rel="stylesheet" />
+</head>
+
+<body>
+    <form>
+        <input type="text" name="schoolNames" placeholder="输入学校进行选择" />
+    </form>
+
+    <script src="../reference/jquery-3.4.0.js"></script>
+    <script src="./searchSelect.js">
+    </script>
+    <script>
+        var schoolNames = ['齐鲁工业大学', '青岛科技大学', '北京大学', '清华大学', '山东师范大学', '山东财经大学', '南开大学', '福州大学', '厦门大学'];
+
+        $(function () {
+            $("input[name='schoolNames']").SearchSelect({ data: schoolNames });
+        })
+    </script>
+</body>
+
+</html>
