@@ -46,9 +46,9 @@
 
       for (var i = 0; i < this.settings.data.length; i++) {
         this.components.$dropdown.append(
-          "<li style='cursor:pointer;padding:2px 10px;text-align:left'>" +
+          "<option style='cursor:pointer;padding:2px 10px;text-align:left'>" +
             this.settings.data[i] +
-            "</li>"
+            "</option>"
         );
       }
     },
@@ -61,7 +61,7 @@
       );
       this.$ele
         .parent()
-        .find("li")
+        .find("option")
         .on("click", $.proxy(this.selectItem, this));
     },
     showPanel: function() {
@@ -77,18 +77,18 @@
         if (this.settings.data[i].indexOf(searchContent) > -1) {
           filteredData.push(this.settings.data[i]);
         }
-        this.components.$dropdown.find("li").remove();
+        this.components.$dropdown.find("option").remove();
       }
       if (filteredData.length == 0) {
         this.components.$dropdown.append(
-          "<li style='cursor:pointer;padding:2px 10px;text-align:left'>没有搜索到对应学校！</li>"
+          "<option style='cursor:pointer;padding:2px 10px;text-align:left'>没有搜索到对应学校！</option>"
         );
       } else {
         for (var i = 0; i < filteredData.length; i++) {
           this.components.$dropdown.append(
-            "<li style='cursor:pointer;padding:2px 10px;text-align:left'>" +
+            "<option style='cursor:pointer;padding:2px 10px;text-align:left'>" +
               filteredData[i] +
-              "</li>"
+              "</option>"
           );
         }
       }
