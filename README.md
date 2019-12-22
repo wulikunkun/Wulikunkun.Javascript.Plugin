@@ -1,6 +1,9 @@
 # 这是一个 jquery 插件库
 
-###########目录结构描述
+## 项目结构
+
+```
+.
 │  README.md
 │  
 ├─.idea
@@ -51,3 +54,5 @@
             index.html
             searchSelect.css
             searchSelect.js
+.
+```
