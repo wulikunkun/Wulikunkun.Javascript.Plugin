@@ -55,3 +55,6 @@
             searchSelect.js
 ```
 ## 2. The dropdown example
+
+![Image text](https://github.com/wulikunkun/wulikunkun_jquery_component/blob/master/readmeImages/Image%203.png)
+
