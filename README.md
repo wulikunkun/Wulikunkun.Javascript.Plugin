@@ -4,53 +4,53 @@
 
 ```
 │  README.md
-│  
+│
 ├─.idea
 │      misc.xml
 │      modules.xml
 │      sample.iml
 │      vcs.xml
 │      workspace.xml
-│      
-└─src
-    ├─carousel
-    │  │  carousel.css
-    │  │  carousel.js
-    │  │  sample.html
-    │  │  
-    │  └─imgs
+│
+└─src // This is the plugins folder
+    ├─carousel  //This is the carousel folder 
+    │  │  carousel.css  // The carousel plugin's css file
+    │  │  carousel.js  // The carousel plugin's js file
+    │  │  sample.html  // The carousel plugin's example page
+    │  │
+    │  └─imgs  // The pictures required for the presentation page
     │          1.jpg
     │          2.jpg
     │          3.jpg
     │          4.jpg
     │          5.jpg
     │          6.jpg
-    │          
-    ├─datepicker
+    │
+    ├─datepicker  //This is the datepicker folder 
     │      datepicker.css
     │      datepicker.js
-    │      sample.html
-    │      
-    ├─dropdown
+    │      sample.html  // The datepicker plugin's example page
+    │
+    ├─dropdown  //This is the dropdown folder 
     │      dropdown.css
     │      dropdown.js
-    │      sample.html
-    │      
-    ├─initial
+    │      sample.html  // The dropdown plugin's example page
+    │
+    ├─initial  //This is the initial folder 
     │      initial.js
-    │      
-    ├─reference
+    │
+    ├─reference  //This is the reference folder 
     │      jquery-1.7.1.min.js
     │      jquery-3.4.0.js
     │      require.js
-    │      
-    ├─search
-    │      sample.html
+    │
+    ├─search  //This is the search folder 
+    │      sample.html  // The search plugin's example page
     │      search.css
     │      search.js
-    │      
-    └─searchSelect
-            index.html
+    │
+    └─searchSelect  //This is the searchSelect folder 
+            index.html  // The searchSelect plugin's example page
             searchSelect.css
             searchSelect.js
 ```
