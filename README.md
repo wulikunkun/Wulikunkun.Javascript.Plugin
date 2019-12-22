@@ -1,6 +1,6 @@
 # This is a jQuery plugin's library
 
-## Project Structure
+## 1.Project Structure
 
 ```
 │  README.md
