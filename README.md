@@ -1,6 +1,6 @@
 # This is a jQuery plugin's library
 
-## 1.Project Structure
+## 1. Project Structure
 
 ```
 │  README.md
@@ -54,3 +54,4 @@
             searchSelect.css
             searchSelect.js
 ```
+## 2. The dropdown example
