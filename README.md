@@ -57,4 +57,6 @@
 ## 2. The dropdown example
 
 ![Image text](https://github.com/wulikunkun/wulikunkun_jquery_component/blob/master/readmeImages/Image%203.png)
+![Image text](https://github.com/wulikunkun/wulikunkun_jquery_component/blob/master/readmeImages/Image%204.png)
+![Image text](https://github.com/wulikunkun/wulikunkun_jquery_component/blob/master/readmeImages/Image%205.png)
 
