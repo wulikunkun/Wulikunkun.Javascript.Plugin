@@ -1,6 +1,6 @@
-# 这是一个 jquery 插件库
+# This is a jQuery plugin's library
 
-## 项目结构
+## Project Structure
 
 ```
 │  README.md
