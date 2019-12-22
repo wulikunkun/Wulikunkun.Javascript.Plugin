@@ -3,7 +3,6 @@
 ## 项目结构
 
 ```
-.
 │  README.md
 │  
 ├─.idea
@@ -54,5 +53,4 @@
             index.html
             searchSelect.css
             searchSelect.js
-.
 ```
