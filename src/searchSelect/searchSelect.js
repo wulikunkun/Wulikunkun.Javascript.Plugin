@@ -17,7 +17,7 @@
         "<option style='cursor:pointer;padding:2px 10px;text-align:left;font-size:14px;color:gray'>没有搜索到对应学校！</option>"
       ),
       $angle: $(
-        "<i class='fa fa-angle-down' style='position:absolute;right:5px;color:lightGray'></i>"
+        "<i class='fa fa-angle-down' style='position:absolute;right:5px;color:gray'></i>"
       )
     };
     this.settings = $.extend({}, this.defaults, options);
@@ -94,6 +94,13 @@
     hidePanel: function() {
       this.components.$dropdown.hide();
       this.components.$angle.toggleClass("fa-angle-down fa-angle-up");
+      debugger;
+      // 在每次关闭panel即输入框失去焦点的时候检查是否有选中过的项，若，将input元素的value设置为此项，否，设置为默认下拉选项的第一项
+      if (this.settings.lastChoseItem !== undefined) {
+        this.$ele.val(this.settings.lastChoseItem);
+      } else {
+        this.$ele.val(this.settings.data[this.settings.defaultIndex]);
+      }
     },
     filterOptions: function(isJustShowPanel = false) {
       this.components.$noResultAlert.remove();
@@ -129,8 +136,10 @@
       this.$ele.val($(e.target).text());
       //这里必须调用一下input的change方法才能将input发生改变的值通知knockout
       this.$ele.change();
+      this.settings.lastChoseItem = $(e.target).text();
       this.hidePanel();
       this.$ele.bind("blur", $.proxy(this.hidePanel, this));
+      debugger;
     },
     changeItemBackcolor: function(e) {
       $(e.target).css("background-color", "lightgray");
