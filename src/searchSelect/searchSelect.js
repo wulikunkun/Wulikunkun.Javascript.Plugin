@@ -41,7 +41,6 @@
       });
       this.$ele.attr("autocomplete", "off");
       this.components.$dropdown.css("max-height", this.settings.maxHeight);
-      //   jquery中的wrap方法是将参数中的元素包裹到调用wrap方法的元素的外面;
       this.$ele.wrap(this.components.$dropdownContainer);
       this.$ele.after(this.components.$dropdown);
       this.components.$dropdown.width(this.$ele.innerWidth());
@@ -98,6 +97,7 @@
       // 在每次关闭panel即输入框失去焦点的时候检查是否有选中过的项，若，将input元素的value设置为此项，否，设置为默认下拉选项的第一项
       if (this.settings.lastChoseItem !== undefined) {
         this.$ele.val(this.settings.lastChoseItem);
+        this.$ele.change();
       } else {
         this.$ele.val(this.settings.data[this.settings.defaultIndex]);
       }
