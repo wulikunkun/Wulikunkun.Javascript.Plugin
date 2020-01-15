@@ -1,4 +1,4 @@
-(function(jQuery, window, document, undefined) {
+;(function(jQuery, window, document, undefined) {
   function SearchSelect(ele, options) {
     this.$ele = $(ele);
     this.defaults = {
