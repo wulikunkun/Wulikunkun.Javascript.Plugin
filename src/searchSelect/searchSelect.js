@@ -93,7 +93,6 @@
     hidePanel: function() {
       this.components.$dropdown.hide();
       this.components.$angle.toggleClass("fa-angle-down fa-angle-up");
-      debugger;
       // 在每次关闭panel即输入框失去焦点的时候检查是否有选中过的项，若，将input元素的value设置为此项，否，设置为默认下拉选项的第一项
       if (this.settings.lastChoseItem !== undefined) {
         this.$ele.val(this.settings.lastChoseItem);
@@ -139,7 +138,6 @@
       this.settings.lastChoseItem = $(e.target).text();
       this.hidePanel();
       this.$ele.bind("blur", $.proxy(this.hidePanel, this));
-      debugger;
     },
     changeItemBackcolor: function(e) {
       $(e.target).css("background-color", "lightgray");
