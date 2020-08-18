@@ -58,21 +58,40 @@
         var currentItem = $dataDom[i];
         if (currentItem.tagName == "H1") {
           var $levelItem = $(
-            '<a class="nav-link text-white-50 border-top border-dark py-3 font-weight-bold text-left px-4" href="#">' +
+            '<a class="nav-link text-light border-top border-dark py-3 font-weight-bold text-left px-4" href="#" data-level="1">' +
               $(currentItem).text() +
               "</a>"
           );
           this.components.$panelNavContainer.append($levelItem);
         } else if (currentItem.tagName == "H2") {
           var $levelItem = $(
-            '<a class="nav-link text-white-50 border-top border-dark py-1 font-weight-bold text-left px-4 small" href="#">' +
+            '<a class="nav-link text-white-50 border-top border-dark py-1 font-weight-bold text-left px-4 small" href="#" data-level="2">' +
               "&nbsp;&nbsp;" +
               $(currentItem).text() +
               "</a>"
           );
-          this.components.$panelNavContainer.last("h1").append($levelItem);
+          // $levelItem.hide();
+
+          var $lastParentLevel = this.components.$panelNavContainer.last(
+            "a[data-level='1']"
+          );
+
+          $lastParentLevel.append(
+            '<i class="fa fa-angle-right text-white" aria-hidden="true"></i>'
+          );
+
+          debugger;
+          $lastParentLevel.after($levelItem);
+        } else if (currentItem.tagName == "H3") {
+          var $levelItem = $(
+            '<a class="nav-link text-white-50 border-top border-dark py-1 font-weight-bold text-left px-4 small" href="#" data-level="3">' +
+              "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+              $(currentItem).text() +
+              "</a>"
+          );
+          // $levelItem.hide();
+          this.components.$panelNavContainer.last("h2").append($levelItem);
         }
-        debugger;
       }
 
       this.components.$panel
