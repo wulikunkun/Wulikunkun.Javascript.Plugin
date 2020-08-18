@@ -64,6 +64,7 @@
           );
           this.components.$panelNavContainer.append($levelItem);
         } else if (currentItem.tagName == "H2") {
+          debugger;
           var $levelItem = $(
             '<a class="nav-link text-white-50 border-top border-dark py-1 font-weight-bold text-left px-4 small" href="#" data-level="2">' +
               "&nbsp;&nbsp;" +
@@ -73,9 +74,7 @@
           // $levelItem.hide();
 
           /* last是对当前选择器选中的dom集合进行过滤，而不是从当前jquery对象的子元素中进行过滤 */
-          var $lastParentLevel = this.components.$panelNavContainer
-            .children()
-            .last("a[data-level='1']");
+          var $lastParentLevel = this.components.$panelNavContainer.children("a[data-level='1']").last();
 
           $lastParentLevel.append(
             '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
