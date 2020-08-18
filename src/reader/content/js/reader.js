@@ -26,6 +26,10 @@
           this.settings.coverUrl +
           '" class="w-50 d-block p-2 mx-auto my-2" />'
       ),
+      $panelNavContainer: $('<nav class="nav-bar"></nav>'),
+      $firstLevel: $(
+        '<a class="nav-link text-white-50 border-top border-dark py-3 font-weight-bold text-right px-4" href="#"></a>'
+      ),
     };
 
     this.init();
@@ -45,12 +49,37 @@
         "<link href='./content/css/bootstrap.min.css' rel='stylesheet'/>"
       );
       $("head").append(
-        "<link href='./content/css/fontawesome.min.css' rel='stylesheet'/>"
+        "<link href='./content/css/fontawesome-free-5.13.0-web/css/all.css' rel='stylesheet'/>"
       );
+
+      /* 倒序加载DOM */
+      var $dataDom = $(this.settings.data);
+      for (var i = 0; i < $dataDom.length; i++) {
+        var currentItem = $dataDom[i];
+        if (currentItem.tagName == "H1") {
+          var $levelItem = $(
+            '<a class="nav-link text-white-50 border-top border-dark py-3 font-weight-bold text-left px-4" href="#">' +
+              $(currentItem).text() +
+              "</a>"
+          );
+          this.components.$panelNavContainer.append($levelItem);
+        } else if (currentItem.tagName == "H2") {
+          var $levelItem = $(
+            '<a class="nav-link text-white-50 border-top border-dark py-1 font-weight-bold text-left px-4 small" href="#">' +
+              "&nbsp;&nbsp;" +
+              $(currentItem).text() +
+              "</a>"
+          );
+          this.components.$panelNavContainer.last("h1").append($levelItem);
+        }
+        debugger;
+      }
 
       this.components.$panel
         .append(this.components.$panelTopBar)
         .append(this.components.$panelCover);
+
+      this.components.$panelCover.after(this.components.$panelNavContainer);
 
       this.components.$container.append(this.components.$panel);
 
@@ -65,11 +94,3 @@
     });
   };
 })(jQuery, document, window);
-
-// Author info:Wang Kun
-// Date: 2019-12-10-13-33-04
-// Dependency: jQuery 1.7.1
-// Parameters:
-// 1. maxHeight:设置下拉框的最大高度，可以用于对齐
-// 2. data:传入的下拉选项的字符串数组
-// 3. defaultIndex: 默认要显示数组中的哪一项，索引从0开始，表示第一项
