@@ -74,11 +74,15 @@
           // $levelItem.hide();
 
           /* last是对当前选择器选中的dom集合进行过滤，而不是从当前jquery对象的子元素中进行过滤 */
-          var $lastParentLevel = this.components.$panelNavContainer.children("a[data-level='1']").last();
+          var $lastParentLevel = this.components.$panelNavContainer
+            .children("a[data-level='1']")
+            .last();
 
-          $lastParentLevel.append(
-            '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
-          );
+          if ($lastParentLevel.children("i").length == 0) {
+            $lastParentLevel.append(
+              '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
+            );
+          }
 
           $lastParentLevel.after($levelItem);
         } else if (currentItem.tagName == "H3") {
@@ -90,12 +94,14 @@
           );
 
           var $lastParentLevel = this.components.$panelNavContainer
-            .children()
-            .last("a[data-level='2']");
+            .children("a[data-level='2']")
+            .last();
 
-          $lastParentLevel.append(
-            '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
-          );
+          if ($lastParentLevel.children("i").length == 0) {
+            $lastParentLevel.append(
+              '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
+            );
+          }
 
           $lastParentLevel.after($levelItem);
         }
