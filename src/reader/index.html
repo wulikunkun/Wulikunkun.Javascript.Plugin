@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>测试页面</title>
+</head>
+
+<body>
+    <div id="menu"></div>
+
+    <script src="../reference/jquery-1.7.1.min.js"></script>
+    <script src="./content/js/reader.js">
+    </script>
+    <script>
+        var testData = "<h1>第一个一级标题</h1><h2>第一个二级标题</h2><h2>第二个二级标题</h2><h3>第二个三级标题</h3><h1>第二个一级标题</h1><h2>第三个二级标题</h2><h2>第四个二级标题</h2><h3>第三个三级标题</h3><h3>第四个三级标题</h3><h1>第三个一级标题</h1><h1>第四个一级标题</h1>";
+        $(function () {
+            $("#menu").Reader({
+                data: testData,
+                width: "20%",
+                height: "100%",
+                coverUrl: "./content/image/smaller.png"
+            });
+        })
+    </script>
+</body>
+
+</html>
