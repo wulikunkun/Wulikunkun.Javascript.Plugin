@@ -64,14 +64,12 @@
           );
           this.components.$panelNavContainer.append($levelItem);
         } else if (currentItem.tagName == "H2") {
-          debugger;
           var $levelItem = $(
             '<a class="nav-link text-white-50 border-top border-dark py-1 font-weight-bold text-left px-4 small" href="#" data-level="2">' +
               "&nbsp;&nbsp;" +
               $(currentItem).text() +
               "</a>"
           );
-          $levelItem.hide();
 
           /* last是对当前选择器选中的dom集合进行过滤，而不是从当前jquery对象的子元素中进行过滤 */
           var $lastParentLevel = this.components.$panelNavContainer
@@ -82,9 +80,13 @@
             $lastParentLevel.append(
               '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
             );
+            var $secLevelContainer = $("<div></div>");
+            $secLevelContainer.append($levelItem);
+            $secLevelContainer.hide();
+            $lastParentLevel.after($secLevelContainer);
+          } else {
+            $lastParentLevel.next().append($levelItem);
           }
-
-          $lastParentLevel.after($levelItem);
         } else if (currentItem.tagName == "H3") {
           var $levelItem = $(
             '<a class="nav-link text-white-50 border-top border-dark py-1 font-weight-bold text-left px-4 small" href="#" data-level="3">' +
@@ -118,7 +120,16 @@
 
       this.$ele.append(this.components.$container);
     },
-    initEvents: function () {},
+    initEvents: function () {
+      this.components.$panelNavContainer
+        .children()
+        .on("click", $.proxy(this.showChildrenLevel, this));
+    },
+    showChildrenLevel: function (e) {
+      var $currentTarget = $(e.target);
+      $currentTarget.next().slideDown();
+    },
+    hideChildrenLevel: function () {},
   };
 
   $.fn.Reader = function (options) {
