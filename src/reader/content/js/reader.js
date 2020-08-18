@@ -72,15 +72,15 @@
           );
           // $levelItem.hide();
 
-          var $lastParentLevel = this.components.$panelNavContainer.last(
-            "a[data-level='1']"
-          );
+          /* last是对当前选择器选中的dom集合进行过滤，而不是从当前jquery对象的子元素中进行过滤 */
+          var $lastParentLevel = this.components.$panelNavContainer
+            .children()
+            .last("a[data-level='1']");
 
           $lastParentLevel.append(
-            '<i class="fa fa-angle-right text-white" aria-hidden="true"></i>'
+            '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
           );
 
-          debugger;
           $lastParentLevel.after($levelItem);
         } else if (currentItem.tagName == "H3") {
           var $levelItem = $(
@@ -89,8 +89,16 @@
               $(currentItem).text() +
               "</a>"
           );
-          // $levelItem.hide();
-          this.components.$panelNavContainer.last("h2").append($levelItem);
+
+          var $lastParentLevel = this.components.$panelNavContainer
+            .children()
+            .last("a[data-level='2']");
+
+          $lastParentLevel.append(
+            '<i class="fa fa-angle-right text-white" aria-hidden="true"></i>'
+          );
+
+          $lastParentLevel.after($levelItem);
         }
       }
 
