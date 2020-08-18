@@ -13,7 +13,7 @@
 
     this.components = {
       $container: $(
-        "<div class='container-fluid'><div class='row' id='container'></div></div>"
+        "<div class='container-fluid px-0'><div class='row' id='container'></div></div>"
       ),
       $panel: $(
         '<div class="col-3 vh-100 overflow-auto position-relative px-0 shadow-sm" style="background-color: #333;"></div>'
