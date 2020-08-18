@@ -71,7 +71,7 @@
               $(currentItem).text() +
               "</a>"
           );
-          // $levelItem.hide();
+          $levelItem.hide();
 
           /* last是对当前选择器选中的dom集合进行过滤，而不是从当前jquery对象的子元素中进行过滤 */
           var $lastParentLevel = this.components.$panelNavContainer
@@ -92,6 +92,7 @@
               $(currentItem).text() +
               "</a>"
           );
+          $levelItem.hide();
 
           var $lastParentLevel = this.components.$panelNavContainer
             .children("a[data-level='2']")
