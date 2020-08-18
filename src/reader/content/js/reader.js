@@ -95,7 +95,7 @@
             .last("a[data-level='2']");
 
           $lastParentLevel.append(
-            '<i class="fa fa-angle-right text-white" aria-hidden="true"></i>'
+            '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
           );
 
           $lastParentLevel.after($levelItem);
