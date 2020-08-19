@@ -54,16 +54,21 @@
 
       /* 倒序加载DOM */
       var $dataDom = $(this.settings.data);
-      var $hTagDoms = $dataDom.filter("h1,h2,h3,h4,h5,h6");
+      var $hTagDoms =
+        $dataDom.filter("h1,h2,h3,h4,h5,h6").length == 0
+          ? $dataDom.find("h1,h2,h3,h4,h5,h6")
+          : $dataDom.filter("h1,h2,h3,h4,h5,h6");
 
       for (var i = 0; i < $hTagDoms.length; i++) {
-        debugger;
         var currentItem = $hTagDoms[i],
           $currentItem = $(currentItem);
+
+        /* 给文档中的H标签添加锚点 */
         $currentItem.attr("id", $currentItem.text());
+
         if (currentItem.tagName == "H1") {
           var $nextLevelItem = $(
-            '<a class="nav-link text-light border-top border-dark py-3 font-weight-bold text-left px-4" data-level="1" href="#' +
+            '<a class="nav-link text-white-50 border-top border-dark py-3 font-weight-bold text-left px-4" data-level="1" href="#' +
               $currentItem.text() +
               '">' +
               $currentItem.text() +
@@ -73,17 +78,30 @@
         } else this.GenerateChildLevel(currentItem);
       }
 
+      /* 向左侧面板添加内容 */
       this.components.$leftPanel
         .append(this.components.$leftPanelTopBar)
         .append(this.components.$leftPanelCover);
-
-      this.components.$rightPanel.find("div.card").html($dataDom);
 
       this.components.$leftPanelCover.after(
         this.components.$leftPanelNavContainer
       );
 
       this.components.$container.children().append(this.components.$leftPanel);
+
+      /* 向右侧面板添加内容 ,初始加载时只显示第一个H1节点及其字节点对应的内容*/
+      /* 使用jquery容易弄混子代和同级的查询，下面这行代码实现了一种‘区间查询的效果’ */
+      // var $firstHTag = $dataDom.find("h1").first().before("<span></span>");
+      var $firstHTagContent = $dataDom
+        .find("h1")
+        .first()
+        .nextUntil("h1");
+
+      /* 在没有添加到dom之前，貌似不可以对其调用after方法 */
+      // var $firstHTagTotalContent = $firstHTag.after($firstHTagContent);
+
+      debugger;
+      this.components.$rightPanel.find("div.card").html($firstHTagContent);
       this.components.$container.children().append(this.components.$rightPanel);
 
       this.$ele.append(this.components.$container);
