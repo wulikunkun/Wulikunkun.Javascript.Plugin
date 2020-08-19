@@ -13,22 +13,22 @@
 
     this.components = {
       $container: $(
-        "<div class='container-fluid px-0'><div class='row' id='container'></div></div>"
+        "<div class='container-fluid'><div class='row' id='container'></div></div>"
       ),
-      $panel: $(
+      $leftPanel: $(
         '<div class="col-3 vh-100 overflow-auto position-relative px-0 shadow-sm" style="background-color: #333;"></div>'
       ),
-      $panelTopBar: $(
+      $leftPanelTopBar: $(
         '<div class="w-100 px-4 text-white py-3 border-bottom border-dark"><i class="fa fa-angle-left" aria-hidden="true"></i><a class="float-right text-light font-weight-bold" href="#">返 回</a></div>'
       ),
-      $panelCover: $(
+      $leftPanelCover: $(
         '<img src="' +
           this.settings.coverUrl +
           '" class="w-50 d-block p-2 mx-auto my-2" />'
       ),
-      $panelNavContainer: $('<nav class="nav-bar"></nav>'),
-      $firstLevel: $(
-        '<a class="nav-link text-white-50 border-top border-dark py-3 font-weight-bold text-right px-4" href="#"></a>'
+      $leftPanelNavContainer: $('<nav class="nav-bar"></nav>'),
+      $rightPanel: $(
+        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:210mm;min-width:210mm" id="frame_container"> <iframe src="./第一个一级标题.html" class="card-body rounded-sm border-0" id="frameOne" scrolling="no"> </iframe> </div> </div>'
       ),
     };
 
@@ -62,27 +62,29 @@
               $(currentItem).text() +
               "</a>"
           );
-          this.components.$panelNavContainer.append($nextLevelItem);
+          this.components.$leftPanelNavContainer.append($nextLevelItem);
         } else this.GenerateChildLevel(currentItem);
       }
 
-      this.components.$panel
-        .append(this.components.$panelTopBar)
-        .append(this.components.$panelCover);
+      this.components.$leftPanel
+        .append(this.components.$leftPanelTopBar)
+        .append(this.components.$leftPanelCover);
 
-      this.components.$panelCover.after(this.components.$panelNavContainer);
+      this.components.$leftPanelCover.after(
+        this.components.$leftPanelNavContainer
+      );
 
-      this.components.$container.append(this.components.$panel);
+      this.components.$container.children().append(this.components.$leftPanel);
+      this.components.$container.children().append(this.components.$rightPanel);
 
       this.$ele.append(this.components.$container);
     },
     initEvents: function () {
-      this.components.$panelNavContainer
+      this.components.$leftPanelNavContainer
         .children()
         .on("click", $.proxy(this.showOrHideChildLevel, this));
     },
     showOrHideChildLevel: function (e) {
-      debugger;
       var $currentLevel = $(e.target);
       $currentLevel.children("i").toggleClass("fa-angle-right fa-angle-down");
       if ($currentLevel.attr("isshow") == "true") {
@@ -118,11 +120,11 @@
 
       var $parentLevel = null;
       if (parentLevelNum == 1) {
-        $parentLevel = this.components.$panelNavContainer
+        $parentLevel = this.components.$leftPanelNavContainer
           .children("a[data-level='" + parentLevelNum + "']")
           .last();
       } else {
-        $parentLevel = this.components.$panelNavContainer
+        $parentLevel = this.components.$leftPanelNavContainer
           .find("a[data-level='" + parentLevelNum + "']")
           .last();
       }
