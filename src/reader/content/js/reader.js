@@ -79,19 +79,29 @@
     initEvents: function () {
       this.components.$panelNavContainer
         .children()
-        .on("click", $.proxy(this.showChildrenLevel, this));
+        .on("click", $.proxy(this.showOrHideChildLevel, this));
     },
-    showChildrenLevel: function (e) {
-      var $currentTarget = $(e.target);
-      $currentTarget
-        .children("i")
-        .toggleClass("fa-angle-right fa-angle-down");
-      $currentTarget.next().slideDown();
-    },
-    hideChildrenLevel: function () {},
-    GenerateChildLevel: function (tagItem) {
+    showOrHideChildLevel: function (e) {
       debugger;
-
+      var $currentLevel = $(e.target);
+      $currentLevel.children("i").toggleClass("fa-angle-right fa-angle-down");
+      if ($currentLevel.attr("isshow") == "true") {
+        this.hideChildrenLevel($currentLevel);
+      } else {
+        this.showChildrenLevel($currentLevel);
+      }
+    },
+    showChildrenLevel: function (selectedLevel) {
+      var $selectedLevel = selectedLevel;
+      $selectedLevel.attr("isshow", "true");
+      $selectedLevel.next().slideDown();
+    },
+    hideChildrenLevel: function (selectedLevel) {
+      var $selectedLevel = selectedLevel;
+      $selectedLevel.attr("isshow", "false");
+      $selectedLevel.next().slideUp();
+    },
+    GenerateChildLevel: function (tagItem) {
       var nextLevelNum = tagItem.tagName[1],
         parentLevelNum = nextLevelNum - 1;
 
