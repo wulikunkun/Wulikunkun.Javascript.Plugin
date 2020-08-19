@@ -28,7 +28,7 @@
       ),
       $leftPanelNavContainer: $('<nav class="nav-bar"></nav>'),
       $rightPanel: $(
-        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:210mm;min-width:210mm" id="frame_container"></div> </div>'
+        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:210mm;min-width:210mm"></div> </div>'
       ),
     };
 
@@ -53,14 +53,20 @@
       );
 
       /* 倒序加载DOM */
-      var $dataDom = $(this.settings.data).filter("h1,h2,h3,h4,h5,h6");
-      for (var i = 0; i < $dataDom.length; i++) {
+      var $dataDom = $(this.settings.data);
+      var $hTagDoms = $dataDom.filter("h1,h2,h3,h4,h5,h6");
+
+      for (var i = 0; i < $hTagDoms.length; i++) {
         debugger;
-        var currentItem = $dataDom[i];
+        var currentItem = $hTagDoms[i],
+          $currentItem = $(currentItem);
+        $currentItem.attr("id", $currentItem.text());
         if (currentItem.tagName == "H1") {
           var $nextLevelItem = $(
-            '<a class="nav-link text-light border-top border-dark py-3 font-weight-bold text-left px-4" href="#" data-level="1">' +
-              $(currentItem).text() +
+            '<a class="nav-link text-light border-top border-dark py-3 font-weight-bold text-left px-4" data-level="1" href="#' +
+              $currentItem.text() +
+              '">' +
+              $currentItem.text() +
               "</a>"
           );
           this.components.$leftPanelNavContainer.append($nextLevelItem);
@@ -70,6 +76,8 @@
       this.components.$leftPanel
         .append(this.components.$leftPanelTopBar)
         .append(this.components.$leftPanelCover);
+
+      this.components.$rightPanel.find("div.card").html($dataDom);
 
       this.components.$leftPanelCover.after(
         this.components.$leftPanelNavContainer
@@ -114,7 +122,9 @@
         parentLevelNum = nextLevelNum - 1;
 
       var $nextLevelItem = $(
-        '<a class="nav-link text-white-50 border-top border-dark py-2 font-weight-bold text-left px-4 small" href="#" data-level="' +
+        '<a class="nav-link text-white-50 border-top border-dark py-2 font-weight-bold text-left px-4 small" href="#' +
+          $(tagItem).text() +
+          '" data-level="' +
           nextLevelNum +
           '">' +
           "&nbsp;&nbsp;".repeat(parentLevelNum) +
