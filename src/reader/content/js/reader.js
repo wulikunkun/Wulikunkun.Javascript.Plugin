@@ -16,7 +16,7 @@
         "<div class='container-fluid'><div class='row' id='container'><div class='col-2'></div></div></div>"
       ),
       $leftPanel: $(
-        '<div class="col-2 vh-100 overflow-auto position-relative px-0 shadow-sm bg-white"></div>'
+        '<div class="col-2 vh-100 overflow-auto position-relative px-0 shadow-sm bg-white border-right"></div>'
       ),
       $leftPanelNavContainer: $('<nav class="nav-bar"></nav>'),
       $rightPanel: $(
@@ -53,7 +53,7 @@
         $currentItem.attr("id", $currentItem.text());
         if (currentItem.tagName == "H1") {
           var $nextLevelItem = $(
-            '<a class="nav-link text-muted border-top border-white py-1 font-weight-bold text-left px-4" data-level="1" href="#' +
+            '<a class="nav-link text-dark border-top border-white py-1 text-left px-4" data-level="1" href="#' +
               $currentItem.text() +
               '">' +
               $currentItem.text() +
@@ -76,7 +76,7 @@
         parentLevelNum = nextLevelNum - 1;
 
       var $nextLevelItem = $(
-        '<a class="nav-link text-muted border-top border-white py-1 font-weight-bold text-left px-4 small" href="#' +
+        '<a class="nav-link text-dark border-top border-white py-1 text-left px-4 small" href="#' +
           $(tagItem).text() +
           '" data-level="' +
           nextLevelNum +
