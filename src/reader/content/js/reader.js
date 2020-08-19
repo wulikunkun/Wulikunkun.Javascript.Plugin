@@ -99,7 +99,7 @@
     hideChildrenLevel: function (selectedLevel) {
       var $selectedLevel = selectedLevel;
       $selectedLevel.attr("isshow", "false");
-      $selectedLevel.next().slideUp();
+      $selectedLevel.next("div").slideUp();
     },
     GenerateChildLevel: function (tagItem) {
       var nextLevelNum = tagItem.tagName[1],
