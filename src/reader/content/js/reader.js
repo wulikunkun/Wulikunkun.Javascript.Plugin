@@ -28,7 +28,7 @@
       ),
       $leftPanelNavContainer: $('<nav class="nav-bar"></nav>'),
       $rightPanel: $(
-        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:210mm;min-width:210mm" id="frame_container"> <iframe src="./第一个一级标题.html" class="card-body rounded-sm border-0" id="frameOne" scrolling="no"> </iframe> </div> </div>'
+        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:210mm;min-width:210mm" id="frame_container"> <iframe src="./1. 第一个一级标题.html" class="card-body rounded-sm border-0" id="frameOne" scrolling="no"> </iframe> </div> </div>'
       ),
     };
 
@@ -87,6 +87,11 @@
     showOrHideChildLevel: function (e) {
       var $currentLevel = $(e.target);
       $currentLevel.children("i").toggleClass("fa-angle-right fa-angle-down");
+
+      this.components.$rightPanel
+        .find("iframe")
+        .attr("src", "./" + $currentLevel.text().trim() + ".html");
+
       if ($currentLevel.attr("isshow") == "true") {
         this.hideChildrenLevel($currentLevel);
       } else {
