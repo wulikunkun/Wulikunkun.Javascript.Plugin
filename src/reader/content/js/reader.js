@@ -106,7 +106,7 @@
         parentLevelNum = nextLevelNum - 1;
 
       var $nextLevelItem = $(
-        '<a class="nav-link text-white-50 border-top border-dark py-1 font-weight-bold text-left px-4 small" href="#" data-level="' +
+        '<a class="nav-link text-white-50 border-top border-dark py-2 font-weight-bold text-left px-4 small" href="#" data-level="' +
           nextLevelNum +
           '">' +
           "&nbsp;&nbsp;".repeat(parentLevelNum) +
