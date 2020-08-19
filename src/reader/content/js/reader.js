@@ -57,57 +57,13 @@
       for (var i = 0; i < $dataDom.length; i++) {
         var currentItem = $dataDom[i];
         if (currentItem.tagName == "H1") {
-          var $levelItem = $(
+          var $nextLevelItem = $(
             '<a class="nav-link text-light border-top border-dark py-3 font-weight-bold text-left px-4" href="#" data-level="1">' +
               $(currentItem).text() +
               "</a>"
           );
-          this.components.$panelNavContainer.append($levelItem);
-        } else if (currentItem.tagName == "H2") {
-          var $levelItem = $(
-            '<a class="nav-link text-white-50 border-top border-dark py-1 font-weight-bold text-left px-4 small" href="#" data-level="2">' +
-              "&nbsp;&nbsp;" +
-              $(currentItem).text() +
-              "</a>"
-          );
-
-          /* last是对当前选择器选中的dom集合进行过滤，而不是从当前jquery对象的子元素中进行过滤 */
-          var $lastParentLevel = this.components.$panelNavContainer
-            .children("a[data-level='1']")
-            .last();
-
-          if ($lastParentLevel.children("i").length == 0) {
-            $lastParentLevel.append(
-              '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
-            );
-            var $secLevelContainer = $("<div></div>");
-            $secLevelContainer.append($levelItem);
-            $secLevelContainer.hide();
-            $lastParentLevel.after($secLevelContainer);
-          } else {
-            $lastParentLevel.next().append($levelItem);
-          }
-        } else if (currentItem.tagName == "H3") {
-          var $levelItem = $(
-            '<a class="nav-link text-white-50 border-top border-dark py-1 font-weight-bold text-left px-4 small" href="#" data-level="3">' +
-              "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
-              $(currentItem).text() +
-              "</a>"
-          );
-          $levelItem.hide();
-
-          var $lastParentLevel = this.components.$panelNavContainer
-            .children("a[data-level='2']")
-            .last();
-
-          if ($lastParentLevel.children("i").length == 0) {
-            $lastParentLevel.append(
-              '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
-            );
-          }
-
-          $lastParentLevel.after($levelItem);
-        }
+          this.components.$panelNavContainer.append($nextLevelItem);
+        } else this.GenerateChildLevel(currentItem);
       }
 
       this.components.$panel
@@ -130,6 +86,46 @@
       $currentTarget.next().slideDown();
     },
     hideChildrenLevel: function () {},
+    GenerateChildLevel: function (tagItem) {
+      debugger;
+
+      var nextLevelNum = tagItem.tagName[1],
+        parentLevelNum = nextLevelNum - 1;
+
+      var $nextLevelItem = $(
+        '<a class="nav-link text-white-50 border-top border-dark py-1 font-weight-bold text-left px-4 small" href="#" data-level="' +
+          nextLevelNum +
+          '">' +
+          "&nbsp;&nbsp;" +
+          $(tagItem).text() +
+          "</a>"
+      );
+
+      /* last是对当前选择器选中的dom集合进行过滤，而不是从当前jquery对象的子元素中进行过滤 */
+
+      var $parentLevel = null;
+      if (parentLevelNum == 1) {
+        $parentLevel = this.components.$panelNavContainer
+          .children("a[data-level='" + parentLevelNum + "']")
+          .last();
+      } else {
+        $parentLevel = this.components.$panelNavContainer
+          .find("a[data-level='" + parentLevelNum + "']")
+          .last();
+      }
+
+      if ($parentLevel.children("i").length == 0) {
+        $parentLevel.append(
+          '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
+        );
+        var $nextLevelContainer = $("<div></div>");
+        $nextLevelContainer.append($nextLevelItem);
+        $nextLevelContainer.hide();
+        $parentLevel.after($nextLevelContainer);
+      } else {
+        $parentLevel.next().append($nextLevelItem);
+      }
+    },
   };
 
   $.fn.Reader = function (options) {
