@@ -83,6 +83,9 @@
     },
     showChildrenLevel: function (e) {
       var $currentTarget = $(e.target);
+      $currentTarget
+        .children("i")
+        .toggleClass("fa-angle-right fa-angle-down");
       $currentTarget.next().slideDown();
     },
     hideChildrenLevel: function () {},
@@ -96,7 +99,7 @@
         '<a class="nav-link text-white-50 border-top border-dark py-1 font-weight-bold text-left px-4 small" href="#" data-level="' +
           nextLevelNum +
           '">' +
-          "&nbsp;&nbsp;" +
+          "&nbsp;&nbsp;".repeat(parentLevelNum) +
           $(tagItem).text() +
           "</a>"
       );
