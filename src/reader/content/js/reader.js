@@ -79,6 +79,15 @@
       this.components.$rightPanel
         .find("button[type='button']")
         .on("click", $.proxy(this.GenerateAnswer, this));
+
+      /* 手动控制checkbox的checked特性 */
+      this.components.$rightPanel
+        .find("input[type='checkbox']")
+        .on("click", function () {
+          if ($(this).attr("checked") == undefined) {
+            $(this).attr("checked", "true");
+          } else $(this).removeAttr("checked");
+        });
     },
     GenerateChildLevel: function (tagItem) {
       var nextLevelNum = tagItem.tagName[1],
@@ -120,8 +129,8 @@
       }
     },
     GenerateAnswer: function (e) {
-      $(e.target).unbind("click");
       var $copy = $(e.target).parents("form").clone();
+      debugger;
       $copy.addClass("mt-3 bordered");
       $copy.css("background-color", "rgb(222 251 236)");
       $copy.find(".form-group").last().remove();
@@ -129,12 +138,17 @@
       for (var i = 0; i < $formItems.length; i++) {
         /* 生成一个1到4之间的任意值作为答案 */
         var answerIndex = random(1, 4);
-        debugger;
 
-        // var selectedInputsNum = $($formItems[i]).find("input[checked='true']")
-        //   .length;
-        // if (selectedInputsNum == 0) alert("请做完所有题目");
-        
+        var selectedInputsNum = $($formItems[i]).find(
+          "input[checked='checked']"
+        ).length;
+        if (selectedInputsNum == 0) {
+          alert("请做完所有题目");
+          $(e.target).bind("click");
+          return;
+        }
+        $(e.target).unbind("click");
+
         var $inputs = $($formItems[i]).find("input");
         for (var j = 0; j < $inputs.length; j++) {
           var $item = $($inputs[j]);
