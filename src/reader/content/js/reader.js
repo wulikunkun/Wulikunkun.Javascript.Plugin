@@ -1,4 +1,7 @@
 (function (jQuery, window, document, undefined) {
+  function random(start, stop) {
+    return parseInt(Math.random() * (stop - start) + start);
+  }
   function Reader(ele, options) {
     this.$ele = $(ele);
 
@@ -30,6 +33,7 @@
   Reader.prototype = {
     init: function () {
       this.initStyle();
+      this.initEvents();
     },
     initStyle: function () {
       /* js文件在哪个页面中执行资源路径就相对于哪个页面 */
@@ -115,8 +119,33 @@
         $parentLevel.next().append($nextLevelItem);
       }
     },
-    GenerateAnswer: function () {
-      debugger;
+    GenerateAnswer: function (e) {
+      $(e.target).unbind("click");
+      var $copy = $(e.target).parents("form").clone();
+      $copy.addClass("mt-3 bordered");
+      $copy.css("background-color", "rgb(222 251 236)");
+      $copy.find(".form-group").last().remove();
+      var $formItems = $copy.find(".form-group");
+      for (var i = 0; i < $formItems.length; i++) {
+        /* 生成一个1到4之间的任意值作为答案 */
+        var answerIndex = random(1, 4);
+        debugger;
+
+        // var selectedInputsNum = $($formItems[i]).find("input[checked='true']")
+        //   .length;
+        // if (selectedInputsNum == 0) alert("请做完所有题目");
+        
+        var $inputs = $($formItems[i]).find("input");
+        for (var j = 0; j < $inputs.length; j++) {
+          var $item = $($inputs[j]);
+          if (j == answerIndex) {
+            $item.attr("checked", "true");
+            $item.next().css("color", "red");
+          } else $item.attr("disabled", "true");
+        }
+      }
+      // var questions = $$copy.find("input").attr("disabled");
+      $(e.target).parents("form").after($copy);
     },
   };
 
