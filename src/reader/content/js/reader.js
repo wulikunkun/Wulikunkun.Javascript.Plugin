@@ -91,17 +91,21 @@
 
       /* 向右侧面板添加内容 ,初始加载时只显示第一个H1节点及其字节点对应的内容*/
       /* 使用jquery容易弄混子代和同级的查询，下面这行代码实现了一种‘区间查询的效果’ */
-      // var $firstHTag = $dataDom.find("h1").first().before("<span></span>");
-      var $firstHTagContent = $dataDom
-        .find("h1")
-        .first()
-        .nextUntil("h1");
+      var firstHTag = $dataDom.find("h1").first().prop("outerHTML");
+      var $firstHTagContent = $dataDom.find("h1").first().nextUntil("h1");
+      var firstHTagContentString = "";
 
+      /*一个常见的问题，在对一个jquery对象集合 进行遍历时，遍历的单个元素需要使用$包裹 */
+      for (var i = 0; i < $firstHTagContent.length; i++) {
+        firstHTagContentString += $($firstHTagContent[i]).prop("outerHTML");
+      }
       /* 在没有添加到dom之前，貌似不可以对其调用after方法 */
       // var $firstHTagTotalContent = $firstHTag.after($firstHTagContent);
 
+      var firstHTagTotalContent = firstHTag + firstHTagContentString;
+
       debugger;
-      this.components.$rightPanel.find("div.card").html($firstHTagContent);
+      this.components.$rightPanel.find("div.card").html(firstHTagTotalContent);
       this.components.$container.children().append(this.components.$rightPanel);
 
       this.$ele.append(this.components.$container);
