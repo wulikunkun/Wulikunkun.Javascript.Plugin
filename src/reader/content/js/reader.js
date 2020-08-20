@@ -71,6 +71,11 @@
 
       this.$ele.append(this.components.$container);
     },
+    initEvents: function () {
+      this.components.$rightPanel
+        .find("button[type='button']")
+        .on("click", $.proxy(this.GenerateAnswer, this));
+    },
     GenerateChildLevel: function (tagItem) {
       var nextLevelNum = tagItem.tagName[1],
         parentLevelNum = nextLevelNum - 1;
@@ -109,6 +114,9 @@
       } else {
         $parentLevel.next().append($nextLevelItem);
       }
+    },
+    GenerateAnswer: function () {
+      debugger;
     },
   };
 
