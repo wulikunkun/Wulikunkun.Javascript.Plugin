@@ -144,10 +144,8 @@
         ).length;
         if (selectedInputsNum == 0) {
           alert("请做完所有题目");
-          $(e.target).bind("click");
           return;
         }
-        $(e.target).unbind("click");
 
         var $inputs = $($formItems[i]).find("input");
         for (var j = 0; j < $inputs.length; j++) {
@@ -160,6 +158,7 @@
       }
       // var questions = $$copy.find("input").attr("disabled");
       $(e.target).parents("form").after($copy);
+      $(e.target).unbind("click");
     },
   };
 
