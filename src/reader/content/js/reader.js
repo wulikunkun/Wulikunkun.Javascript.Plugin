@@ -16,14 +16,14 @@
 
     this.components = {
       $container: $(
-        "<div class='container-fluid'><div class='row' id='container'><div class='col-2'></div></div></div>"
+        "<div class='container-fluid px-0 text-center'><div class='mx-auto d-inline-block text-left' id='container'></div></div>"
       ),
       $leftPanel: $(
-        '<div class="col-2 vh-100 overflow-auto position-relative px-0 shadow-sm bg-white border-right"></div>'
+        '<div class="vh-100 overflow-auto position-relative px-0 shadow-sm bg-white border-right float-left" style="width:310px"></div>'
       ),
       $leftPanelNavContainer: $('<nav class="nav-bar"></nav>'),
       $rightPanel: $(
-        '<div class="col-6 bg-light vh-100 overflow-auto position-relative px-0"><div class="card min-vh-100 rounded-0 px-5 py-2 border-0 shadow-sm mx-0"></div> </div><div class="col-2"></div>'
+        '<div class="bg-light vh-100 overflow-auto position-relative px-0 float-left"><div class="card min-vh-100 rounded-0 px-5 py-2 border-0 shadow-sm mx-0" style="width:210mm"></div></div>'
       ),
     };
 
