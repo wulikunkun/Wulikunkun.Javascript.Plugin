@@ -2,3 +2,6 @@ a:hover {
   background-color: #1890ff;
   color: white !important;
 }
+.custom-border-dark {
+  border-color: #111313 !important;
+}

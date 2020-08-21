@@ -28,7 +28,7 @@
       ),
       $leftPanelNavContainer: $('<nav class="nav-bar"></nav>'),
       $rightPanel: $(
-        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:210mm;min-width:210mm"></div> </div>'
+        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:195mm;min-width:195mm"></div> </div>'
       ),
     };
 
@@ -144,7 +144,7 @@
         parentLevelNum = nextLevelNum - 1;
 
       var $nextLevelItem = $(
-        '<a class="nav-link text-white-50 border-top border-dark py-2 font-weight-bold text-left px-4 small" href="#' +
+        '<a class="nav-link text-white-50 border-top custom-border-dark py-2 font-weight-bold text-left px-4 small" href="#' +
           $(tagItem).text() +
           '" data-level="' +
           nextLevelNum +
