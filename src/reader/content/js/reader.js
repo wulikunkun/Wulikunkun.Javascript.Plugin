@@ -11,6 +11,8 @@
 
     this.settings = $.extend({}, this.defaults, options);
 
+    this.$domData = $(this.settings.data);
+
     this.components = {
       $container: $(
         "<div class='container-fluid'><div class='row' id='container'></div></div>"
@@ -28,7 +30,7 @@
       ),
       $leftPanelNavContainer: $('<nav class="nav-bar"></nav>'),
       $rightPanel: $(
-        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:195mm;min-width:195mm"></div> </div>'
+        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:200mm;min-width:200mm"></div> </div>'
       ),
     };
 
@@ -53,12 +55,12 @@
       );
 
       /* 倒序加载DOM */
-      var $dataDom = $(this.settings.data);
-      var $hTagDoms =
-        $dataDom.filter("h1,h2,h3,h4,h5,h6").length == 0
-          ? $dataDom.find("h1,h2,h3,h4,h5,h6")
-          : $dataDom.filter("h1,h2,h3,h4,h5,h6");
 
+      var $hTagDoms =
+        this.$domData.filter("h1,h2,h3,h4,h5,h6").length == 0
+          ? this.$domData.find("h1,h2,h3,h4,h5,h6")
+          : this.$domData.filter("h1,h2,h3,h4,h5,h6");
+      debugger;
       for (var i = 0; i < $hTagDoms.length; i++) {
         var currentItem = $hTagDoms[i],
           $currentItem = $(currentItem);
@@ -91,8 +93,8 @@
 
       /* 向右侧面板添加内容 ,初始加载时只显示第一个H1节点及其字节点对应的内容*/
       /* 使用jquery容易弄混子代和同级的查询，下面这行代码实现了一种‘区间查询的效果’ */
-      var firstHTag = $dataDom.find("h1").first().prop("outerHTML");
-      var $firstHTagContent = $dataDom.find("h1").first().nextUntil("h1");
+      var firstHTag = this.$domData.find("h1").first().prop("outerHTML");
+      var $firstHTagContent = this.$domData.find("h1").first().nextUntil("h1");
       var firstHTagContentString = "";
 
       /*一个常见的问题，在对一个jquery对象集合 进行遍历时，遍历的单个元素需要使用$包裹 */
@@ -104,16 +106,18 @@
 
       var firstHTagTotalContent = firstHTag + firstHTagContentString;
 
-      debugger;
       this.components.$rightPanel.find("div.card").html(firstHTagTotalContent);
       this.components.$container.children().append(this.components.$rightPanel);
-
       this.$ele.append(this.components.$container);
     },
     initEvents: function () {
       this.components.$leftPanelNavContainer
         .children()
         .on("click", $.proxy(this.showOrHideChildLevel, this));
+
+      this.components.$leftPanelNavContainer
+        .find("a")
+        .on("click", $.proxy(this.showLevelContent, this));
     },
     showOrHideChildLevel: function (e) {
       var $currentLevel = $(e.target);
@@ -171,12 +175,38 @@
         $parentLevel.append(
           '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
         );
-        var $nextLevelContainer = $("<div style='background:rgb(33, 31, 31)'></div>");
+        var $nextLevelContainer = $(
+          "<div style='background:rgb(33, 31, 31)'></div>"
+        );
         $nextLevelContainer.append($nextLevelItem);
         $nextLevelContainer.hide();
         $parentLevel.after($nextLevelContainer);
       } else {
         $parentLevel.next().append($nextLevelItem);
+      }
+    },
+
+    /* 在左侧导航栏点击不同的一级链接时在右侧只显示该一级标题下的内容 */
+    showLevelContent: function (e) {
+      var $targetLevel = $(e.target);
+      var level = $targetLevel.data("level");
+      if (level == 1) {
+        var firstLevelTitle = $targetLevel.text().trim();
+        var $firstLevelItem = this.$domData.find(
+          "h1:contains(" + firstLevelTitle + ")"
+        );
+
+        var firstHTag = $firstLevelItem.prop("outerHTML");
+        var $firstHTagContent = $firstLevelItem.nextUntil("h1");
+        var firstHTagContentString = "";
+        for (var i = 0; i < $firstHTagContent.length; i++) {
+          firstHTagContentString += $($firstHTagContent[i]).prop("outerHTML");
+        }
+        var firstHTagTotalContent = firstHTag + firstHTagContentString;
+
+        this.components.$rightPanel
+          .find("div.card")
+          .html(firstHTagTotalContent);
       }
     },
   };
