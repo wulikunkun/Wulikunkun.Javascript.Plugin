@@ -30,7 +30,7 @@
       ),
       $leftPanelNavContainer: $('<nav class="nav-bar"></nav>'),
       $rightPanel: $(
-        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:200mm;min-width:200mm"></div> </div>'
+        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:230mm;min-width:230mm"></div> </div>'
       ),
     };
 
