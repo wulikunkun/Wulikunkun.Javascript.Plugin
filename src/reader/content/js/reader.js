@@ -144,7 +144,7 @@
         parentLevelNum = nextLevelNum - 1;
 
       var $nextLevelItem = $(
-        '<a class="nav-link text-white-50 border-top custom-border-dark py-2 font-weight-bold text-left px-4 small" href="#' +
+        '<a class="nav-link text-white-50 custom-border-dark py-2 font-weight-bold text-left px-4 small" href="#' +
           $(tagItem).text() +
           '" data-level="' +
           nextLevelNum +
@@ -171,7 +171,7 @@
         $parentLevel.append(
           '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
         );
-        var $nextLevelContainer = $("<div></div>");
+        var $nextLevelContainer = $("<div style='background:rgb(33, 31, 31)'></div>");
         $nextLevelContainer.append($nextLevelItem);
         $nextLevelContainer.hide();
         $parentLevel.after($nextLevelContainer);

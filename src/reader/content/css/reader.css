@@ -3,5 +3,5 @@ a:hover {
   color: white !important;
 }
 .custom-border-dark {
-  border-color: #111313 !important;
+  border-top: 1px solid #262729 !important;
 }
