@@ -21,7 +21,7 @@
         '<div class="col-3 vh-100 overflow-auto position-relative px-0 shadow-sm" style="background-color: #333;"></div>'
       ),
       $leftPanelTopBar: $(
-        '<div class="w-100 px-4 text-white py-3 border-bottom border-dark"><i class="fa fa-angle-left" aria-hidden="true"></i><a class="float-right text-light font-weight-bold" href="#">返 回</a></div>'
+        '<div class="w-100 px-4 text-white py-3 border-bottom border-dark"><i class="fa fa-angle-left" aria-hidden="true"></i><a class="float-right text-light" href="#">返 回</a></div>'
       ),
       $leftPanelCover: $(
         '<img src="' +
@@ -70,7 +70,7 @@
 
         if (currentItem.tagName == "H1") {
           var $nextLevelItem = $(
-            '<a class="nav-link text-white-50 border-top border-dark py-3 font-weight-bold text-left px-4" data-level="1" href="#' +
+            '<a class="nav-link text-white-50 border-top border-dark py-3 text-left px-4" data-level="1" href="#' +
               $currentItem.text() +
               '">' +
               $currentItem.text() +
@@ -148,7 +148,7 @@
         parentLevelNum = nextLevelNum - 1;
 
       var $nextLevelItem = $(
-        '<a class="nav-link text-white-50 custom-border-dark py-2 font-weight-bold text-left px-4 small" href="#' +
+        '<a class="nav-link text-white-50 custom-border-dark py-2 text-left px-4 small" href="#' +
           $(tagItem).text() +
           '" data-level="' +
           nextLevelNum +
