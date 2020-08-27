@@ -18,7 +18,7 @@
         "<div class='container-fluid'><div class='row' id='container'></div></div>"
       ),
       $leftPanel: $(
-        '<div class="col-3 vh-100 overflow-auto position-relative px-0 shadow-sm" style="background-color: #333;"></div>'
+        '<div class="col-3 vh-100 overflow-auto position-relative px-0 shadow-sm left-panel"></div>'
       ),
       $leftPanelTopBar: $(
         '<div class="w-100 px-4 text-white py-3 border-bottom border-dark"><i class="fa fa-angle-left" aria-hidden="true"></i><a class="float-right text-light" href="#">返 回</a></div>'

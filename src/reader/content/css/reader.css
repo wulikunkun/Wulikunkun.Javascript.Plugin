@@ -5,3 +5,9 @@ a:hover {
 .custom-border-dark {
   border-top: 1px solid #262729 !important;
 }
+.left-panel {
+  background-color: #333;
+}
+.left-panel a {
+  font-family: "Noto Serif SC", serif;
+}
