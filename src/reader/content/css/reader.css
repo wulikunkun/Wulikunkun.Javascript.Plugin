@@ -30,7 +30,7 @@ a:hover {
   font-size: 0.9rem;
 }
 .custom-small-font {
-  font-size: 0.4rem !important;
+  font-size: 0.75rem !important;
 }
 
 .custom-light-border {
@@ -47,4 +47,7 @@ a:hover {
 
 .custom-link:hover {
   background-color: #2882f1;
+}
+.custom-gray-border{
+  border-top:1px solid gray;
 }

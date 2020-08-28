@@ -18,17 +18,17 @@
         "<div class='container-fluid'><div class='row' id='container'></div></div>"
       ),
       $leftPanel: $(
-        '<div class="col-3 vh-100 overflow-auto position-relative px-0 left-panel custom-scroll"></div>'
+        '<div class="col-3 vh-100 overflow-auto position-relative px-2 left-panel custom-scroll"></div>'
       ),
       $leftPanelTopBar: $(
-        '<div class="w-100 px-4 text-muted py-2 border-bottom border-light"><i class="fa fa-angle-left text-black-50" aria-hidden="true"></i><a class="float-right text-black-50 small" href="#">返 回</a></div>'
+        '<div class="w-100 px-2 text-muted py-2 border-bottom border-light"><i class="fa fa-angle-left text-black-50" aria-hidden="true"></i><a class="float-right text-black-50 small" href="#">返 回</a></div>'
       ),
       $leftPanelCover: $(
         '<img src="' +
           this.settings.coverUrl +
           '" class="w-50 d-block p-2 mx-auto my-2" />'
       ),
-      $leftPanelNavContainer: $('<nav class="nav-bar px-4"></nav>'),
+      $leftPanelNavContainer: $('<nav class="nav-bar px-3 custom-gray-border"></nav>'),
       $rightPanel: $(
         '<div class="col-9 custom-light-panel-bg vh-100 overflow-auto position-relative px-5 rounded-sm"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:210mm;min-width:210mm"></div> </div>'
       ),
