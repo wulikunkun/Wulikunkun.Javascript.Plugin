@@ -20,3 +20,7 @@ a:hover {
   height:10px;
   background-color: white;
 }
+
+.custom-first-level{
+  font-size:.9rem;
+}

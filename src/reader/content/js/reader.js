@@ -21,7 +21,7 @@
         '<div class="col-3 vh-100 overflow-auto position-relative px-0 shadow-sm left-panel custom-scroll"></div>'
       ),
       $leftPanelTopBar: $(
-        '<div class="w-100 px-4 text-white py-3 border-bottom border-dark"><i class="fa fa-angle-left" aria-hidden="true"></i><a class="float-right text-light" href="#">返 回</a></div>'
+        '<div class="w-100 px-4 text-white py-2 border-bottom border-dark"><i class="fa fa-angle-left" aria-hidden="true"></i><a class="float-right text-light" href="#">返 回</a></div>'
       ),
       $leftPanelCover: $(
         '<img src="' +
