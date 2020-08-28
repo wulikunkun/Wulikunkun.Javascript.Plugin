@@ -18,10 +18,10 @@
         "<div class='container-fluid'><div class='row' id='container'></div></div>"
       ),
       $leftPanel: $(
-        '<div class="col-3 vh-100 overflow-auto position-relative px-0 shadow-sm left-panel custom-scroll"></div>'
+        '<div class="col-3 vh-100 overflow-auto position-relative px-0 left-panel custom-scroll"></div>'
       ),
       $leftPanelTopBar: $(
-        '<div class="w-100 px-4 text-white py-2 border-bottom border-dark"><i class="fa fa-angle-left" aria-hidden="true"></i><a class="float-right text-light" href="#">返 回</a></div>'
+        '<div class="w-100 px-4 text-muted py-2 border-bottom border-light"><i class="fa fa-angle-left text-black-50" aria-hidden="true"></i><a class="float-right text-black-50 small" href="#">返 回</a></div>'
       ),
       $leftPanelCover: $(
         '<img src="' +
@@ -30,7 +30,7 @@
       ),
       $leftPanelNavContainer: $('<nav class="nav-bar px-4"></nav>'),
       $rightPanel: $(
-        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:210mm;min-width:210mm"></div> </div>'
+        '<div class="col-9 custom-light-panel-bg vh-100 overflow-auto position-relative px-5 rounded-sm"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:210mm;min-width:210mm"></div> </div>'
       ),
     };
 
@@ -60,7 +60,7 @@
         this.$domData.filter("h1,h2,h3,h4,h5,h6").length == 0
           ? this.$domData.find("h1,h2,h3,h4,h5,h6")
           : this.$domData.filter("h1,h2,h3,h4,h5,h6");
-      debugger;
+     
       for (var i = 0; i < $hTagDoms.length; i++) {
         var currentItem = $hTagDoms[i],
           $currentItem = $(currentItem);
@@ -70,7 +70,7 @@
 
         if (currentItem.tagName == "H1") {
           var $nextLevelItem = $(
-            '<a class="nav-link text-white-50 border-top border-dark py-3 text-left px-4 rounded-sm" data-level="1" href="#' +
+            '<a class="nav-link text-black-50 py-3 text-left px-4 rounded-sm small custom-link custom-light-border" data-level="1" href="#' +
               $currentItem.text() +
               '">' +
               $currentItem.text() +
@@ -148,7 +148,7 @@
         parentLevelNum = nextLevelNum - 1;
 
       var $nextLevelItem = $(
-        '<a class="nav-link text-white-50 custom-border-dark py-2 text-left px-4 small rounded-sm" href="#' +
+        '<a class="nav-link py-2 text-left px-4 small rounded-sm custom-purple-font custom-light-border custom-small-font custom-link" href="#' +
           $(tagItem).text() +
           '" data-level="' +
           nextLevelNum +
@@ -173,10 +173,10 @@
 
       if ($parentLevel.children("i").length == 0) {
         $parentLevel.append(
-          '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
+          '&nbsp;&nbsp;<i class="fa fa-angle-right text-black-50" aria-hidden="true"></i>'
         );
         var $nextLevelContainer = $(
-          "<div class='rounded-sm' style='background:rgb(33, 31, 31)'></div>"
+          "<div class='rounded-sm' style='background-color:#c8e6ff'></div>"
         );
         $nextLevelContainer.append($nextLevelItem);
         $nextLevelContainer.hide();

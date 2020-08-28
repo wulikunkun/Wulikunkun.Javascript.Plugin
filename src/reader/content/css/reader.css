@@ -6,21 +6,45 @@ a:hover {
   border-top: 1px solid #262729 !important;
 }
 .left-panel {
-  background-color: #333;
+  background-color: #fff;
 }
 .left-panel a {
   font-family: "Noto Serif SC", serif;
 }
+
+/*自定义滚动条  */
 .custom-scroll::-webkit-scrollbar {
   width: 5px;
   background-color: gray;
 }
 .custom-scroll::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  height:10px;
+  height: 10px;
   background-color: white;
 }
+.custom-scroll::-webkit-scrollbar-track {
+  background-color: #c6def7;
+}
 
-.custom-first-level{
-  font-size:.9rem;
+.custom-first-level {
+  font-size: 0.9rem;
+}
+.custom-small-font {
+  font-size: 0.4rem !important;
+}
+
+.custom-light-border {
+  border-top: 1px dotted;
+  border-color: #eaeaea !important;
+}
+.custom-light-panel-bg {
+  background-color: #f4faff;
+}
+
+.custom-purple-font {
+  color: #5774c7;
+}
+
+.custom-link:hover {
+  background-color: #2882f1;
 }
