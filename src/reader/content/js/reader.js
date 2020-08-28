@@ -18,7 +18,7 @@
         "<div class='container-fluid'><div class='row' id='container'></div></div>"
       ),
       $leftPanel: $(
-        '<div class="col-3 vh-100 overflow-auto position-relative px-0 shadow-sm left-panel"></div>'
+        '<div class="col-3 vh-100 overflow-auto position-relative px-0 shadow-sm left-panel test"></div>'
       ),
       $leftPanelTopBar: $(
         '<div class="w-100 px-4 text-white py-3 border-bottom border-dark"><i class="fa fa-angle-left" aria-hidden="true"></i><a class="float-right text-light" href="#">返 回</a></div>'
@@ -28,9 +28,9 @@
           this.settings.coverUrl +
           '" class="w-50 d-block p-2 mx-auto my-2" />'
       ),
-      $leftPanelNavContainer: $('<nav class="nav-bar"></nav>'),
+      $leftPanelNavContainer: $('<nav class="nav-bar px-4"></nav>'),
       $rightPanel: $(
-        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:230mm;min-width:230mm"></div> </div>'
+        '<div class="col-9 bg-light vh-100 overflow-auto position-relative px-5"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:210mm;min-width:210mm"></div> </div>'
       ),
     };
 
@@ -176,7 +176,7 @@
           '&nbsp;&nbsp;<i class="fa fa-angle-right text-white-50" aria-hidden="true"></i>'
         );
         var $nextLevelContainer = $(
-          "<div style='background:rgb(33, 31, 31)'></div>"
+          "<div class='rounded-sm' style='background:rgb(33, 31, 31)'></div>"
         );
         $nextLevelContainer.append($nextLevelItem);
         $nextLevelContainer.hide();
