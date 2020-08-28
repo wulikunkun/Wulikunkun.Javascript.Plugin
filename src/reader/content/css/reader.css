@@ -11,7 +11,12 @@ a:hover {
 .left-panel a {
   font-family: "Noto Serif SC", serif;
 }
-.test::-webkit-scrollbar {
+.custom-scroll::-webkit-scrollbar {
   width: 5px;
   background-color: gray;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  height:10px;
+  background-color: white;
 }
