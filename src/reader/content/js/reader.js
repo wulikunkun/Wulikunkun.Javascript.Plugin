@@ -28,7 +28,7 @@
           this.settings.coverUrl +
           '" class="w-50 d-block p-2 mx-auto my-2" />'
       ),
-      $leftPanelNavContainer: $('<nav class="nav-bar px-3 custom-gray-border"></nav>'),
+      $leftPanelNavContainer: $('<nav class="nav-bar px-3"></nav>'),
       $rightPanel: $(
         '<div class="col-9 custom-light-panel-bg vh-100 overflow-auto position-relative px-5 rounded-sm"><div class="card min-vh-100 my-5 rounded-0 p-5 border-0 shadow-sm mx-auto" style="width:210mm;min-width:210mm"></div> </div>'
       ),
