@@ -8,7 +8,7 @@ a:hover {
 .left-panel {
   background-color: #fff;
 }
-.left-panel a {
+.custom-font,.custom-font a {
   font-family: "Noto Serif SC", serif;
 }
 
