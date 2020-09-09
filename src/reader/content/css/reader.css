@@ -8,7 +8,8 @@ a:hover {
 .left-panel {
   background-color: #fff;
 }
-.custom-font,.custom-font a {
+.custom-font,
+.custom-font a {
   font-family: "Noto Serif SC", serif;
 }
 
@@ -38,7 +39,7 @@ a:hover {
   border-color: #eaeaea !important;
 }
 .custom-light-panel-bg {
-  background-color: #f4faff;
+  background-color: #e8eef3;
 }
 
 .custom-purple-font {
@@ -48,6 +49,6 @@ a:hover {
 .custom-link:hover {
   background-color: #2882f1;
 }
-.custom-gray-border{
-  border-top:1px solid gray;
+.custom-gray-border {
+  border-top: 1px solid gray;
 }
