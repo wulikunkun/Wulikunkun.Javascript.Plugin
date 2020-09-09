@@ -12,7 +12,7 @@
     this.settings = $.extend({}, this.defaults, options);
 
     /* 考虑到用户编写的内容中可能并没有父级标签包裹标题标签，所以在此手动使用div进行强制包裹 */
-    this.$domData = $("<div>"+this.settings.data+"</div>");
+    this.$domData = $("<div>" + this.settings.data + "</div>");
 
     this.components = {
       $container: $(
@@ -61,7 +61,7 @@
         this.$domData.filter("h1,h2,h3,h4,h5,h6").length == 0
           ? this.$domData.find("h1,h2,h3,h4,h5,h6")
           : this.$domData.filter("h1,h2,h3,h4,h5,h6");
-     
+
       for (var i = 0; i < $hTagDoms.length; i++) {
         var currentItem = $hTagDoms[i],
           $currentItem = $(currentItem);
@@ -217,4 +217,4 @@
       new Reader(this, options);
     });
   };
-})(jQuery, document, window);
+})(jQuery, window, document);
