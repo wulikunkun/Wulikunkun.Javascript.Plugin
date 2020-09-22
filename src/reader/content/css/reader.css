@@ -1,5 +1,5 @@
 a:hover {
-  background-color: #1890ff;
+  background-color: #a2c9f9;
   color: white !important;
 }
 .custom-border-dark {
@@ -47,7 +47,7 @@ a:hover {
 }
 
 .custom-link:hover {
-  background-color: #2882f1;
+  background-color: #a2c9f9;
 }
 .custom-gray-border {
   border-top: 1px solid gray;

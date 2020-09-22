@@ -31,7 +31,7 @@
       ),
       $leftPanelNavContainer: $('<nav class="nav-bar px-3"></nav>'),
       $rightPanel: $(
-        '<div class="col-9 custom-light-panel-bg vh-100 overflow-auto position-relative px-5 rounded-lg custom-font"><div class="min-vh-100 my-5 p-5 border-0 shadow-sm mx-auto rounded-sm bg-white" style="width:210mm;min-width:210mm"><div class="card px-4 py-2"></div></div></div>'
+        '<div class="col-9 custom-light-panel-bg vh-100 overflow-auto position-relative px-5 rounded-lg custom-font"><div class="min-vh-100 my-5 p-5 border-0 shadow-sm mx-auto rounded-sm bg-white" style="width:210mm;min-width:210mm"><div class="overflow-hidden"><span class="border-bottom border-right float-left" style="width:1.5rem;height:1.5rem"></span><span class="border-left border-bottom float-right" style="width:1.5rem;height:1.5rem"></span></div><div class="card px-4 py-4 border-0"></div></div></div>'
       ),
     };
 
@@ -108,6 +108,13 @@
       var firstHTagTotalContent = firstHTag + firstHTagContentString;
 
       this.components.$rightPanel.find("div.card").html(firstHTagTotalContent);
+      this.components.$rightPanel
+        .find("div.card")
+        .parent()
+        .append(
+          '<div class="overflow-hidden"><span class="border-top border-right float-left" style="width:1.5rem;height:1.5rem"></span><span class="border-left border-top float-right" style="width:1.5rem;height:1.5rem"></span></div>'
+        );
+
       this.components.$container.children().append(this.components.$rightPanel);
       this.$ele.append(this.components.$container);
     },
@@ -118,7 +125,7 @@
 
       this.components.$leftPanelNavContainer
         .find("a")
-        .on("click", $.proxy(this.showLevelContent, this));
+        .on("click", $.proxy(this.ShowLevelContent, this));
     },
     showOrHideChildLevel: function (e) {
       var $currentLevel = $(e.target);
@@ -177,7 +184,7 @@
           '&nbsp;&nbsp;<i class="fa fa-angle-right text-black-50" aria-hidden="true"></i>'
         );
         var $nextLevelContainer = $(
-          "<div class='rounded-sm' style='background-color:#c8e6ff'></div>"
+          "<div class='rounded-sm' style='background-color:rgb(238 242 245)'></div>"
         );
         $nextLevelContainer.append($nextLevelItem);
         $nextLevelContainer.hide();
@@ -186,10 +193,14 @@
         $parentLevel.next().append($nextLevelItem);
       }
     },
-
     /* 在左侧导航栏点击不同的一级链接时在右侧只显示该一级标题下的内容 */
-    showLevelContent: function (e) {
+    ShowLevelContent: function (e) {
       var $targetLevel = $(e.target);
+      // this.components.$leftPanelNavContainer
+      //   .find("a")
+      //   .css("background", "white");
+      $targetLevel.css("background", "#a2c9f9");
+
       var level = $targetLevel.data("level");
       if (level == 1) {
         var firstLevelTitle = $targetLevel.text().trim();
@@ -208,6 +219,19 @@
         this.components.$rightPanel
           .find("div.card")
           .html(firstHTagTotalContent);
+
+        /*  确定右侧panel底部定位器的数量，如果已经存在，则不必重复添加*/
+        var bottomLocatorNum = this.components.$rightPanel.find(
+          "span.border-top.border-right"
+        ).length;
+        if (bottomLocatorNum === 0) {
+          this.components.$rightPanel
+            .find("div.card")
+            .parent()
+            .append(
+              '<div class="overflow-hidden"><span class="border-top border-right float-left" style="width:1.5rem;height:1.5rem"></span><span class="border-left border-top float-right" style="width:1.5rem;height:1.5rem"></span></div>'
+            );
+        }
       }
     },
   };
