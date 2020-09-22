@@ -196,9 +196,9 @@
     /* 在左侧导航栏点击不同的一级链接时在右侧只显示该一级标题下的内容 */
     ShowLevelContent: function (e) {
       var $targetLevel = $(e.target);
-      // this.components.$leftPanelNavContainer
-      //   .find("a")
-      //   .css("background", "white");
+
+      /*  左侧导航栏选中项的背景色设置*/
+      this.components.$leftPanelNavContainer.find("a").removeAttr("style");
       $targetLevel.css("background", "#a2c9f9");
 
       var level = $targetLevel.data("level");
