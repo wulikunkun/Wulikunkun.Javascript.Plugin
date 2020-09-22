@@ -57,6 +57,7 @@
 
       /* 倒序加载DOM */
 
+      debugger;
       var $hTagDoms =
         this.$domData.filter("h1,h2,h3,h4,h5,h6").length == 0
           ? this.$domData.find("h1,h2,h3,h4,h5,h6")
@@ -91,6 +92,11 @@
       );
 
       this.components.$container.children().append(this.components.$leftPanel);
+
+      this.components.$leftPanelNavContainer
+        .children()
+        .first()
+        .css("background", "#a2c9f9");
 
       /* 向右侧面板添加内容 ,初始加载时只显示第一个H1节点及其字节点对应的内容*/
       /* 使用jquery容易弄混子代和同级的查询，下面这行代码实现了一种‘区间查询的效果’ */
