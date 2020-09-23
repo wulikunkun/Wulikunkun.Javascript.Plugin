@@ -42,19 +42,8 @@
       this.initEvents();
     },
     initStyle: function () {
-      /* js文件在哪个页面中执行资源路径就相对于哪个页面 */
-      $("head").append(
-        "<link href='./content/css/reader.css' rel='stylesheet'/>"
-      );
-      $("head").append(
-        "<link href='./content/css/bootstrap.min.css' rel='stylesheet'/>"
-      );
-      $("head").append(
-        "<link href='./content/css/fontawesome-free-5.13.0-web/css/all.css' rel='stylesheet'/>"
-      );
 
       /* 倒序加载DOM */
-
       debugger;
       var $hTagDoms =
         this.$domData.filter("h1,h2,h3,h4,h5,h6").length == 0
