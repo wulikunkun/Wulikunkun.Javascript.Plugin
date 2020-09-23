@@ -4,8 +4,6 @@
 
     this.defaults = {
       data: "",
-      width: "15%",
-      height: "100%",
       coverUrl: "",
     };
 
